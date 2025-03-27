@@ -2,15 +2,16 @@
 
 ## Overview
 
-In this tutorial, you'll practice component refactoring and creation in React, then deploy your application to Firebase Hosting. You'll refactor an existing counter component, create a new component to display personal information, and streamline the application by removing boilerplate code.
+In this tutorial, you'll practice component creation in React and deploy your application to Firebase Hosting. You'll create a new component to display personal information and streamline the application by removing boilerplate code.
 
 ## Learning Objectives
 
-- Extract functionality into reusable React components
 - Work with TypeScript interfaces for props
-- Implement stateful components and prop-based components
+- Implement a prop-based component
 - Deploy a React application using Firebase Hosting
 - Apply modern React development practices
+- understand the basics of testing React components; using a 'test first' approach
+- learn a few basics of doing clean personal development by using tools like linting and prettier.
 
 ## Prerequisites
 
@@ -44,19 +45,23 @@ git commit -m "Initial commit: Template setup"
 
 This will create your first commit with the original template. As you complete each step of the assignment, commit your changes to create checkpoints you can return to if needed.
 
-### Step 3: Install Dependencies
+### Step 3: Install Dependencies and make sure the template works
 
 ```bash
 npm install
+npm run dev
 ```
 
+you will get a link in console to open the app in your browser. You should see a simple page with a header and a footer and a "not yet implemented" message in the middle.
+
+````bash
 ### Step 4: Explore the Project Structure
 
 Take a moment to familiarize yourself with the project structure:
 
 - `/src` - Contains React components and application code
-- `/src/App.tsx` - Main application component with counter functionality
-- `/tests` - Contains Vitest test files
+- `/src/App.tsx` - Main application component
+- `/tests` - Contains Vitest test file that must pass to complete the assignment
 - `vite.config.ts` - Vite and Vitest configuration
 
 ## Git Version Control
@@ -64,10 +69,6 @@ Take a moment to familiarize yourself with the project structure:
 As you complete each step of the assignment, commit your changes to create checkpoints:
 
 ```bash
-# After completing the Counter component
-git add src/components/Counter.tsx src/App.tsx
-git commit -m "Complete Counter component refactoring"
-
 # After completing the BioCard component
 git add src/components/BioCard.tsx src/components/BioCard.css
 git commit -m "Add BioCard component"
@@ -75,7 +76,7 @@ git commit -m "Add BioCard component"
 # After cleaning up App.tsx
 git add src/App.tsx src/App.css
 git commit -m "Clean up and personalize App component"
-```
+````
 
 **Reverting to Previous State**: If you encounter problems, you can use Git to return to your last working state:
 
@@ -91,55 +92,18 @@ This brings your codebase back to the state of that commit, effectively undoing 
 
 ## Assignment Tasks
 
-### Task 1: Refactor the Counter from App.tsx
+### Task 1: Create a BioCard Component
 
-Currently, the counter functionality is implemented directly in the App component. Your first task is to refactor this into a separate component:
+Create a new component to display personal information:
 
-1. Create a new file named `Counter.tsx` in the `/src/components` directory (create this directory if it doesn't exist)
-2. Implement a reusable Counter component that:
-
-   - Maintains its own state for the count
-   - Provides increment, decrement, and reset functionality
-   - Accepts an optional `initialValue` prop (default: 0)
-   - Has clear, semantic HTML structure
-
-3. Update `App.tsx` to:
-   - Import and use your new Counter component
-   - Remove the counter-specific state and functions
-   - Pass any necessary props to the Counter component
-
-#### Component Requirements
-
-Your Counter component should follow this interface:
-
-```typescript
-interface CounterProps {
-  initialValue?: number;
-}
-
-export function Counter({ initialValue = 0 }: CounterProps) {
-  // Implementation here
-}
-```
-
-And should render:
-
-- A display showing the current count
-- Increment (+) button
-- Decrement (-) button
-- Reset button
-
-### Task 2: Create a BioCard Component
-
-Next, create a new component to display personal information:
-
-1. Create a new file named `BioCard.tsx` in the `/src/components` directory
-2. Implement a BioCard component that:
+1. The component is `BioCard.tsx` in the `/src/components` directory
+2. The component has corresponding CSS file for styling
+3. Implement a BioCard component that:
    - Accepts props for name, link, description, and image URL
    - Displays the name as a hyperlink to the provided URL
    - Shows the description text below the name
-   - Displays the image above the text content
-   - Has appropriate styling
+   - Displays the image above the text content; and has an `alt` attribute for accessibility with the name
+   - Uses CSS to style the component with a professional look
 
 #### Component Requirements
 
@@ -158,30 +122,57 @@ export function BioCard({ name, link, description, imageUrl }: BioCardProps) {
 }
 ```
 
-### Task 3: Clean Up and Personalize App.tsx
+### Task 2: Clean Up and Personalize App.tsx
 
-Remove the boilerplate code from the template and personalize the application:
+update the use of the BioCard component in the App.tsx file to display your personal information: - Your name - A link to your professional profile (LinkedIn, GitHub, personal website, etc.) - A brief professional description or bio statement - A link to a professional photo or any image that represents you that you're comfortable having on the open internet
 
-1. Remove unnecessary logos, links, and boilerplate text
-2. Update `App.tsx` to:
-   - Import your Counter and BioCard components
-   - Use the BioCard component with your personal information:
-     - Your name
-     - A link to your professional profile (LinkedIn, GitHub, personal website, etc.)
-     - A brief professional description or bio statement
-     - A link to a professional photo or any image that represents you that you're comfortable having on the open internet
-   - Add the Counter component below your BioCard
-   - Add any additional styling or structure to make the page look professional
+- Add any additional styling or structure to make the page look professional
+
+The test make sure that you have all of this information in the BioCard component. Review the test file [bio-card.test.tsx](./tests/bio-card.test.tsx) to see the specific requirements for the BioCard component.
+
+### Task 3: Insure BioCard tests pass
+
+The tests in [bio-card.test.tsx](./tests/bio-card.test.tsx) are written to test the BioCard component. You should not modify these tests. You should run the tests to make sure your BioCard component is working as expected. You can run the tests with the following command:
+
+```bash
+npm test
+```
+
+You can also use the test extensions in VSCode to run the tests if you have the Jest and Vite test running extension installed.
+
+Before you write your code; you should make sure the tests run and fail. This is a 'test first' approach to development. You should write your code to make the tests pass. A good strategy is to work through each test one by one. Make sure you understand what the test is asking for and then write the code to make the test pass. Once you have a test passing, move on to the next test in the file
+
+Think about making a commit each time you get the tests working. The template uses some linting and prettier tools to help you keep your code clean; and checks those before accepting the commit. You can run these in the terminal with the following commands:
+
+```bash
+npm run lint
+```
+
+The purpose of this is to insure that your code is formatted in a standard way (prettier) and that it follows some basic coding standards that help prevent errors (linting).
+
+### Task 3: Inspect the application in the browser
+
+After you have completed the BioCard component and updated the App.tsx file, you should be able to see your personal information displayed in the browser. You can run the application with the following command:
+
+```bash
+npm run dev
+```
 
 ### Task 4: Deploy to Firebase Hosting
 
 Finally, deploy your application to Firebase:
 
-1. Install the Firebase CLI:
+1. Insure you have installed the Firebase CLI:
 
-   ```bash
-   npm install -g firebase-tools
-   ```
+```bash
+firebase --version
+```
+
+This should return a version number for firebase. If it does not, you can install the firebase CLI with the following command:
+
+```bash
+npm install -g firebase-tools
+```
 
 2. Build your application:
 
@@ -212,22 +203,6 @@ Finally, deploy your application to Firebase:
 
 5. Access your deployed site at the URL provided by Firebase after deployment
 
-## Testing Your Implementation
-
-Run the tests for your Counter component:
-
-```bash
-npm test
-```
-
-The tests validate that:
-
-- The component renders properly
-- Increment button increases the count by 1
-- Decrement button decreases the count by 1
-- Reset button returns the count to initialValue
-- The component accepts and uses the initialValue prop correctly
-
 ## Submission Guidelines
 
 To submit your work:
@@ -241,9 +216,6 @@ To submit your work:
 2. Push your code to GitHub:
 
    ```bash
-   git init
-   git add .
-   git commit -m "Complete React component assignment"
    git branch -M main
    git remote add origin [your-github-repo-url]
    git push -u origin main
@@ -251,15 +223,14 @@ To submit your work:
 
 3. Ensure your application is deployed to Firebase Hosting
 
-4. Submit your Firebase Hosting URL in Canvas
+4. Submit your Firebase Hosting URL in Canvas as well as a link to the repository
 
 ## Grading Rubric (10 Points Total)
 
 | Criteria                | Points   | Description                                                                                                          |
 | ----------------------- | -------- | -------------------------------------------------------------------------------------------------------------------- |
-| **GitHub Repository**   | 2 points | Code is successfully pushed to GitHub and can build with `npm install && npm run build`                              |
-| **Counter Component**   | 3 points | Counter component is properly refactored from App.tsx, functions correctly, and passes all tests                     |
-| **BioCard Component**   | 3 points | BioCard component is created with the correct props, displays information properly, and follows the specified design |
+| **GitHub Repository**   | 3 points | Code is successfully pushed to GitHub and can build with `npm install && npm run build`                              |
+| **BioCard Component**   | 5 points | BioCard component is created with the correct props, displays information properly, and follows the specified design |
 | **Firebase Deployment** | 2 points | Application is successfully deployed to Firebase Hosting and accessible via the provided URL                         |
 
 **Note:** The Firebase URL must be submitted in Canvas to receive credit for deployment.
