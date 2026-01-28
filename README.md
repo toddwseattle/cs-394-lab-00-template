@@ -12,7 +12,7 @@ This lab includes **GitHub Copilot coaching instructions** designed to help you 
 - **You'll be encouraged to explore** - Copilot will point you to documentation and help you understand concepts
 - **You'll develop problem-solving skills** - The goal is to help you learn the process, not just complete the task
 
-**Tip:** Don't just accept the first suggestion! Engage with Copilot by asking questions, and use it as a learning tool to understand *why* code works, not just *what* code to write.
+**Tip:** Don't just accept the first suggestion! Engage with Copilot by asking questions, and use it as a learning tool to understand _why_ code works, not just _what_ code to write.
 
 The Copilot instructions are located in `.github/copilot-instructions.md` if you want to review them.
 
@@ -22,8 +22,8 @@ The Copilot instructions are located in `.github/copilot-instructions.md` if you
 - Implement a prop-based component
 - Deploy a React application using Firebase Hosting
 - Apply modern React development practices
-- understand the basics of testing React components; using a 'test first' approach
-- learn a few basics of doing clean personal development by using tools like linting and prettier.
+- Understand the basics of testing React components; using a 'test first' approach
+- Learn a few basics of doing clean personal development by using tools like linting and prettier.
 
 ## Prerequisites
 
@@ -100,6 +100,7 @@ Create a new component to display personal information:
    - Uses CSS to style the component with a professional look
 
 **Before you start coding:**
+
 - Open and read `tests/biocard.test.tsx` - What is each test checking?
 - Look at the current `BioCard.tsx` - What's already there?
 - Think about the structure: What HTML elements will you need?
@@ -122,6 +123,7 @@ export function BioCard({ name, link, description, imageUrl }: BioCardProps) {
 ```
 
 **Hints for implementation:**
+
 - The function signature shows you how to accept and destructure props
 - You'll need JSX elements for an image, a link, and text
 - The tests will tell you exactly what elements and attributes are expected
@@ -129,21 +131,27 @@ export function BioCard({ name, link, description, imageUrl }: BioCardProps) {
 
 ### Task 2: Clean Up and Personalize App.tsx
 
-update the use of the BioCard component in the App.tsx file to display your personal information: - Your name - A link to your professional profile (LinkedIn, GitHub, personal website, etc.) - A brief professional description or bio statement - A link to a professional photo or any image that represents you that you're comfortable having on the open internet
+Update the use of the BioCard component in the App.tsx file to display your personal information:
+
+- Your name
+- A link to your professional profile (LinkedIn, GitHub, personal website, etc.)
+- A brief professional description or bio statement
+- A link to a professional photo or any image that represents you that you're comfortable having on the open internet
 
 Add any additional styling or structure to make the page look professional
 
-The tests make sure that you have all of this information in the BioCard component. Review the test file [bio-card.test.tsx](./tests/bio-card.test.tsx) to see the specific requirements for the BioCard component.
+The tests make sure that you have all of this information in the BioCard component. Review the test file [biocard.test.tsx](./tests/biocard.test.tsx) to see the specific requirements for the BioCard component.
 
 **Think about:**
+
 - How do you pass data to a React component? (Hint: props)
 - What syntax do you use to pass multiple props?
 - Where can you find example images to use? (Consider GitHub profile, LinkedIn, or a professional headshot)
 - What makes a good professional description? (Keep it brief but informative)
 
-### Task 3: Insure BioCard tests pass
+### Task 3: Ensure BioCard tests pass
 
-Run the tests in [bio-card.test.tsx](./tests/bio-card.test.tsx). **You should not modify these tests.** You should run the tests to make sure your BioCard component is working as expected. Run the tests with the following command:
+Run the tests in [biocard.test.tsx](./tests/biocard.test.tsx). **You should not modify these tests.** You should run the tests to make sure your BioCard component is working as expected. Run the tests with the following command:
 
 ```bash
 npm test
@@ -153,9 +161,10 @@ You can also use the test extensions in VSCode to run the tests if you have the 
 
 **Understanding Test-Driven Development (TDD):**
 
-Before you write your code; you should make sure the tests run and fail. This is a 'test first' approach to development, often abbreviated [TDD](https://tidyfirst.substack.com/p/canon-tdd). 
+Before you write your code; you should make sure the tests run and fail. This is a 'test first' approach to development, often abbreviated [TDD](https://tidyfirst.substack.com/p/canon-tdd).
 
 **Recommended workflow:**
+
 1. **Read the test file first** - Understand what each test expects before writing code
 2. **Run the tests** - See them fail (this is the "red" phase)
 3. **Write minimal code** - Make just one test pass at a time
@@ -164,6 +173,7 @@ Before you write your code; you should make sure the tests run and fail. This is
 6. **Move to the next test** - Repeat the process
 
 **Reflection questions to consider:**
+
 - What is each test checking for?
 - Why might the tests be ordered this way?
 - What's the simplest code that could make this test pass?
@@ -181,7 +191,7 @@ npm run lint
 
 The purpose of this is to insure that your code is formatted in a standard way (prettier) and that it follows some basic coding standards that help prevent errors (linting).
 
-### Task 3: Inspect the application in the browser
+### Task 4: Inspect the application in the browser
 
 After you have completed the BioCard component and updated the App.tsx file, you should be able to see your personal information displayed in the browser. You can run the application with the following command:
 
@@ -189,7 +199,7 @@ After you have completed the BioCard component and updated the App.tsx file, you
 npm run dev
 ```
 
-### Task 4: Deploy to Firebase Hosting
+### Task 5: Deploy to Firebase Hosting
 
 Finally, deploy your application to Firebase:
 
