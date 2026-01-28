@@ -4,6 +4,18 @@
 
 In this tutorial, you'll practice component creation in React and deploying your application to Firebase Hosting. You'll create a new component to display personal information and streamline the application by removing boilerplate code.
 
+## Using GitHub Copilot for This Lab
+
+This lab includes **GitHub Copilot coaching instructions** designed to help you learn effectively. When you use Copilot:
+
+- **Copilot will guide you, not give you answers** - It will ask questions and provide hints to help you think through problems
+- **You'll be encouraged to explore** - Copilot will point you to documentation and help you understand concepts
+- **You'll develop problem-solving skills** - The goal is to help you learn the process, not just complete the task
+
+**Tip:** Don't just accept the first suggestion! Engage with Copilot by asking questions, and use it as a learning tool to understand *why* code works, not just *what* code to write.
+
+The Copilot instructions are located in `.github/copilot-instructions.md` if you want to review them.
+
 ## Learning Objectives
 
 - Work with TypeScript interfaces for props
@@ -87,6 +99,11 @@ Create a new component to display personal information:
    - Displays the image above the text content; and has an `alt` attribute for accessibility with the name
    - Uses CSS to style the component with a professional look
 
+**Before you start coding:**
+- Open and read `tests/biocard.test.tsx` - What is each test checking?
+- Look at the current `BioCard.tsx` - What's already there?
+- Think about the structure: What HTML elements will you need?
+
 #### Component Requirements
 
 Your BioCard component should follow this interface:
@@ -104,6 +121,12 @@ export function BioCard({ name, link, description, imageUrl }: BioCardProps) {
 }
 ```
 
+**Hints for implementation:**
+- The function signature shows you how to accept and destructure props
+- You'll need JSX elements for an image, a link, and text
+- The tests will tell you exactly what elements and attributes are expected
+- Start simple - make one test pass at a time
+
 ### Task 2: Clean Up and Personalize App.tsx
 
 update the use of the BioCard component in the App.tsx file to display your personal information: - Your name - A link to your professional profile (LinkedIn, GitHub, personal website, etc.) - A brief professional description or bio statement - A link to a professional photo or any image that represents you that you're comfortable having on the open internet
@@ -111,6 +134,12 @@ update the use of the BioCard component in the App.tsx file to display your pers
 Add any additional styling or structure to make the page look professional
 
 The tests make sure that you have all of this information in the BioCard component. Review the test file [bio-card.test.tsx](./tests/bio-card.test.tsx) to see the specific requirements for the BioCard component.
+
+**Think about:**
+- How do you pass data to a React component? (Hint: props)
+- What syntax do you use to pass multiple props?
+- Where can you find example images to use? (Consider GitHub profile, LinkedIn, or a professional headshot)
+- What makes a good professional description? (Keep it brief but informative)
 
 ### Task 3: Insure BioCard tests pass
 
@@ -122,7 +151,25 @@ npm test
 
 You can also use the test extensions in VSCode to run the tests if you have the Jest and Vite test running extension installed.
 
-Before you write your code; you should make sure the tests run and fail. This is a 'test first' approach to development, often abbreviated [TDD](https://tidyfirst.substack.com/p/canon-tdd). You should write your code to make the tests pass. A good strategy is to work through each test one by one. Make sure you understand what the test is asking for and then write the code to make the test pass. Once you have a test passing, move on to the next test in the file.
+**Understanding Test-Driven Development (TDD):**
+
+Before you write your code; you should make sure the tests run and fail. This is a 'test first' approach to development, often abbreviated [TDD](https://tidyfirst.substack.com/p/canon-tdd). 
+
+**Recommended workflow:**
+1. **Read the test file first** - Understand what each test expects before writing code
+2. **Run the tests** - See them fail (this is the "red" phase)
+3. **Write minimal code** - Make just one test pass at a time
+4. **Run tests again** - Verify it passes (this is the "green" phase)
+5. **Commit your progress** - Save your working code
+6. **Move to the next test** - Repeat the process
+
+**Reflection questions to consider:**
+- What is each test checking for?
+- Why might the tests be ordered this way?
+- What's the simplest code that could make this test pass?
+- How does the test output guide you toward the solution?
+
+A good strategy is to work through each test one by one. Make sure you understand what the test is asking for and then write the code to make the test pass. Once you have a test passing, move on to the next test in the file.
 
 In a real project, you would typically write the tests yourself as you develop the component. However, for this assignment, the tests are already provided for you.
 
@@ -227,6 +274,45 @@ git push -u origin main
 | **Firebase Deployment** | 2 points | Application is successfully deployed to Firebase Hosting and accessible via the provided URL                          |
 
 **Note:** The Firebase URL must be submitted in Canvas to receive credit for deployment.
+
+## Learning Strategies and Tips
+
+### Problem-Solving Approach
+
+When you get stuck, try this systematic approach:
+
+1. **Read the error message carefully** - What is it telling you?
+2. **Check the tests** - What exactly is being tested?
+3. **Review the documentation** - Links are provided in the Helpful Resources section
+4. **Try the simplest solution first** - Complex solutions often indicate you're overthinking
+5. **Use console.log()** - Debug by printing values to understand what's happening
+6. **Commit working code frequently** - You can always revert if something breaks
+
+### Making the Most of GitHub Copilot
+
+- **Ask questions** instead of just accepting suggestions
+- **Request explanations** for code you don't understand
+- **Use it as a learning tool**, not just a code generator
+- **Verify suggestions** by running tests and checking documentation
+- **Experiment** with different ways of asking for help
+
+### Common Pitfalls to Avoid
+
+- **Don't skip reading the tests** - They tell you exactly what's needed
+- **Don't modify the test file** - Your code should make the tests pass as-is
+- **Don't rush through errors** - Each error is a learning opportunity
+- **Don't forget to commit** - Regular commits protect your work
+- **Don't copy code you don't understand** - Take time to learn what it does
+
+### Reflection Prompts
+
+As you work through this lab, consider:
+
+- What was the most challenging part? Why?
+- How did the tests help guide your implementation?
+- What did you learn about React component props?
+- How does TypeScript help catch errors before runtime?
+- What would you do differently if you were creating this component from scratch?
 
 ## Helpful Resources
 
